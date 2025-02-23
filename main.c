@@ -123,7 +123,7 @@ void example_back_and_forth(uint32_t color) {
 void example_spectrum(uint16_t duration) {
 	device_acquire();
 	send_animation_config_start(0);
-	send_zone_select(1, 4, ZONE_ALL);
+	send_zone_select(1, 16, ZONE_ALL);
 	send_add_action(ACTION_MORPH, duration, 64, 0xFF0000);
 	send_add_action(ACTION_MORPH, duration, 64, 0xFFa500);
 	send_add_action(ACTION_MORPH, duration, 64, 0xFFFF00);
@@ -138,7 +138,7 @@ void example_spectrum(uint16_t duration) {
 void example_static(uint32_t color) {
 	device_acquire();
 	send_animation_config_start(0);
-	send_zone_select(1, 4, ZONE_ALL);
+	send_zone_select(1, 16, ZONE_ALL);
 	send_add_action(ACTION_COLOR, 1, 2, color);
 	send_animation_config_play(0);
 	device_release();
@@ -147,7 +147,7 @@ void example_static(uint32_t color) {
 void example_breathe(uint16_t duration, uint32_t color) {
 	device_acquire();
 	send_animation_config_start(0);
-	send_zone_select(1, 4, ZONE_ALL);
+	send_zone_select(1, 16, ZONE_ALL);
 	send_add_action(ACTION_MORPH, duration, 64, color);
 	send_add_action(ACTION_MORPH, duration, 64, 0);
 	send_animation_config_play(0);
@@ -177,7 +177,7 @@ int main(int argc, char** argv) {
 				return 1;
 			}
 			device_acquire();
-			send_set_dim(value, 4, ZONE_ALL);
+			send_set_dim(value, 16, ZONE_ALL);
 			device_release();
 		} else if (!strcmp(argv[1], "static")) {
 			uint32_t color = strtol(argv[2], NULL, 16);
@@ -189,7 +189,7 @@ int main(int argc, char** argv) {
 			device_acquire();
 			send_animation_remove(1);
 			send_animation_config_start(1);
-			send_zone_select(1, 4, ZONE_ALL);
+			send_zone_select(1, 16, ZONE_ALL);
 			send_add_action(ACTION_COLOR, 1, 2, color);
 			send_animation_config_save(1);
 			send_animation_set_default(1);
@@ -204,7 +204,7 @@ int main(int argc, char** argv) {
 			device_acquire();
 			send_animation_remove(1);
 			send_animation_config_start(1);
-			send_zone_select(1, 4, ZONE_ALL);
+			send_zone_select(1, 16, ZONE_ALL);
 			send_add_action(ACTION_MORPH, duration, 64, 0xFF0000);
 			send_add_action(ACTION_MORPH, duration, 64, 0xFFa500);
 			send_add_action(ACTION_MORPH, duration, 64, 0xFFFF00);
@@ -225,7 +225,7 @@ int main(int argc, char** argv) {
 			device_acquire();
 			send_animation_remove(1);
 			send_animation_config_start(1);
-			send_zone_select(1, 4, ZONE_ALL);
+			send_zone_select(1, 16, ZONE_ALL);
 			send_add_action(ACTION_MORPH, 500, 64, color);
 			send_add_action(ACTION_MORPH, 2000, 64, color);
 			send_add_action(ACTION_MORPH, 500, 64, 0);
@@ -253,7 +253,7 @@ int main(int argc, char** argv) {
 	// device_acquire();
 	// send_animation_remove(1);
 	// send_animation_config_start(1);
-	// send_zone_select(1, 4, ZONE_ALL);
+	// send_zone_select(1, 16, ZONE_ALL);
 	// send_add_action(ACTION_COLOR, 1, 2, 0xFFFFFF);
 	// send_animation_config_save(1);
 	// send_animation_set_default(1);
@@ -272,7 +272,7 @@ int main(int argc, char** argv) {
 
 	// Set brightness
 	// device_acquire();
-	// send_set_dim(BRIGHTNESS_FULL, 4, ZONE_ALL);
+	// send_set_dim(BRIGHTNESS_FULL, 16, ZONE_ALL);
 	// device_release();
 
 	device_close();
